@@ -62,7 +62,7 @@ const products = [
         id: 9,
         name: 'Combo 10 mẫu Nhân Vật Stitch V2',
         price: '20.000₫',
-        image: images['../assets/img/stitchv1/bia.jpg'],
+        image: images['../assets/img/stitchv2/bia.jpg'],
         category: 'Nam châm tủ lạnh',
     },
     {
