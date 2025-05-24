@@ -1,98 +1,17 @@
 // src/pages/ProductPage.jsx
 import React, { useState } from 'react'
 import { images } from '../utils/images'
-const products = [
-    {
-        id: 1,
-        name: 'Combo 10 mẫu Tom & Jerry',
-        price: '20.000₫',
-        image: images['../assets/img/tom&jerry/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 2,
-        name: 'Combo 10 mẫu Sinh Vật Biển',
-        price: '20.000₫',
-        image: images['../assets/img/sinhvatbien/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 3,
-        name: 'Combo 10 mẫu Cô Bé Trái Cây',
-        price: '20.000₫',
-        image: images['../assets/img/cobetraicay/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 4,
-        name: 'Combo 12 mẫu Nhân Vật Disney',
-        price: '24.000₫',
-        image: images['../assets/img/nhanvatdisney/bia.png'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 5,
-        name: 'Combo 10 mẫu Cô Gái Áo Len',
-        price: '20.000₫',
-        image: images['../assets/img/cogaiaolen/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 6,
-        name: 'Combo 10 mẫu Hình Quái Vật',
-        price: '20.000₫',
-        image: images['../assets/img/quaivat/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 7,
-        name: 'Combo 10 mẫu Hình Cún Con',
-        price: '20.000₫',
-        image: images['../assets/img/cuncon/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 8,
-        name: 'Combo 10 mẫu Nhân Vật Stitch V1',
-        price: '20.000₫',
-        image: images['../assets/img/stitchv1/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 9,
-        name: 'Combo 10 mẫu Nhân Vật Stitch V2',
-        price: '20.000₫',
-        image: images['../assets/img/stitchv2/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 10,
-        name: 'Combo 10 mẫu Nhân Vật Shin v1',
-        price: '20.000₫',
-        image: images['../assets/img/shinv1/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 11,
-        name: 'Combo 10 mẫu Nhân Vật Shin v2',
-        price: '20.000₫',
-        image: images['../assets/img/shinv2/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    {
-        id: 12,
-        name: 'Combo 10 mẫu Nhân Vật Shin v3',
-        price: '20.000₫',
-        image: images['../assets/img/shinv3/bia.jpg'],
-        category: 'Nam châm tủ lạnh',
-    },
-    // ... bạn thêm sản phẩm mới ở đây
-]
+import { useNavigate } from 'react-router-dom'
+import { products } from '../data/products'
+
+
+
 
 const categories = ['Tất cả', 'Nam châm tủ lạnh', 'Ghim cài', 'Trang trí bàn học']
 
 export default function ProductPage() {
     const [selectedCategory, setSelectedCategory] = useState('Tất cả')
+    const navigate = useNavigate()
 
     const filteredProducts =
         selectedCategory === 'Tất cả'
@@ -123,7 +42,9 @@ export default function ProductPage() {
                     <div
                         key={product.id}
                         className="border rounded-lg p-4 shadow hover:shadow-lg transition"
+                        onClick={() => navigate(`/product/${product.id}`)}
                     >
+
                         <img
                             src={product.image}
                             alt={product.name}
@@ -131,6 +52,7 @@ export default function ProductPage() {
                         />
                         <h3 className="mt-2 text-lg font-bold">{product.name}</h3>
                         <p className="text-pink-600 font-semibold">{product.price}</p>
+
                     </div>
                 ))}
             </div>
